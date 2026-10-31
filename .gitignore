@@ -1,0 +1,15 @@
+vendor/
+.venv/
+datasets/
+outputs/
+__pycache__/
+*.py[cod]
+*.before_*
+.jetson-install-report.txt
+.pytest_cache/
+.DS_Store
+*.pem
+*.key
+id_*
+!checkpoints/LightStereo-S-KITTI.ckpt
+!checkpoints/SHA256SUMS

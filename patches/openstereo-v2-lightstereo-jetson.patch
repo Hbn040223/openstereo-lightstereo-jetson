@@ -1,0 +1,57 @@
+diff --git a/stereo/modeling/__init__.py b/stereo/modeling/__init__.py
+index b963265..5675dfa 100644
+--- a/stereo/modeling/__init__.py
++++ b/stereo/modeling/__init__.py
+@@ -18,17 +18,17 @@ from .models.monster.trainer import Trainer as MonsterTrainer
+ from .models.igevpp.trainer import Trainer as IGEVPPTrainer
+ from .models.igev_rt.trainer import Trainer as IGEVRTTrainer
+ 
+-try:
+-# 'If you want to train/eval FoundationStereo, please refer to docs/prepare_foundationstereo.md
+-    from .models.foundationstereo.trainer import Trainer as FoundationStereoTrainer
+-except:
+-    raise ValueError('If you want to train/eval FoundationStereo, please refer to docs/prepare_foundationstereo.md. Otherwise you can comment out this line of code')
+-
+-try:
+-    from timm.layers import DropPath
+-    from .models.fast_foundationstereo.trainer import Trainer as FastFoundationStereoTrainer
+-except:
+-    raise ValueError("timm>=0.9 is required to use timm.layers in FastFoundationStereo. Otherwise you can comment out this line of code")
++# try:
++# # 'If you want to train/eval FoundationStereo, please refer to docs/prepare_foundationstereo.md
++#     from .models.foundationstereo.trainer import Trainer as FoundationStereoTrainer
++# except:
++#     raise ValueError('If you want to train/eval FoundationStereo, please refer to docs/prepare_foundationstereo.md. Otherwise you can comment out this line of code')
++#
++# try:
++#     from timm.layers import DropPath
++#     from .models.fast_foundationstereo.trainer import Trainer as FastFoundationStereoTrainer
++# except:
++#     raise ValueError("timm>=0.9 is required to use timm.layers in FastFoundationStereo. Otherwise you can comment out this line of code")
+ 
+ # If you want to train/eval NMRF-Stereo, you need to build deformable attention and superpixel-guided disparity downsample operator: 'cd stereo/modeling/models/nmrf/ops && sh make.sh && cd ..'
+ # try:
+@@ -51,8 +51,8 @@ __all__ = {
+     'CasPSMNet': CasStereoTrainer,
+     'LightStereo': LightStereoTrainer,
+     'StereoBaseGRU': StereoBaseGRUTrainer,
+-    'FoundationStereo': FoundationStereoTrainer,
+-    'FastFoundationStereo': FastFoundationStereoTrainer,
++#     'FoundationStereo': FoundationStereoTrainer,
++#     'FastFoundationStereo': FastFoundationStereoTrainer,
+     # 'IInet': IINetTrainer,
+     # 'NMRF': NMRFTrainer
+     "MonSter": MonsterTrainer,
+diff --git a/stereo/modeling/models/lightstereo/backbone.py b/stereo/modeling/models/lightstereo/backbone.py
+index b46fdbb..38d6a6d 100644
+--- a/stereo/modeling/models/lightstereo/backbone.py
++++ b/stereo/modeling/models/lightstereo/backbone.py
+@@ -30,7 +30,7 @@ class Backbone(nn.Module):
+     def __init__(self, backbone='MobileNetv2'):
+         super().__init__()
+         if backbone == 'MobileNetv2':
+-            model = timm.create_model('mobilenetv2_100', pretrained=True, features_only=True)
++            model = timm.create_model('mobilenetv2_100', pretrained=False, features_only=True)
+             channels = [160, 96, 32, 24]
+         elif backbone == 'EfficientNetv2':
+             model = timm.create_model('efficientnetv2_rw_s', pretrained=True, features_only=True)
