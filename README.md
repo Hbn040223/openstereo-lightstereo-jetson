@@ -46,6 +46,8 @@ Run one rectified stereo pair:
 
 The output is a color disparity visualisation PNG. It is not a raw, metric-depth or raw-disparity export. Left and right inputs must be rectified RGB images with identical dimensions.
 
+For reusable inference commands, full/fine-tuning commands, dataset setup, and a table explaining which configuration changes affect which results, see [the Chinese inference and training guide](docs/INFERENCE_AND_TRAINING_GUIDE_zh-CN.md).
+
 ## Benchmark
 
 ```bash
